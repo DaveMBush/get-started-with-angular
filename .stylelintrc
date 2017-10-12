@@ -1,0 +1,11 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "indentation": 4,
+    "no-empty-source": null,
+    "selector-type-no-unknown": null,
+    "color-hex-case": ["lower", {
+      "message": "lowercase letters are easier to distinguish from numbers"
+    }]
+  }
+}
