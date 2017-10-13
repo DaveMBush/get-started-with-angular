@@ -1,3 +1,4 @@
+import { ListReducer } from './list.reducer';
 import { SharedModule } from '../../shared/shared.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -13,8 +14,9 @@ describe('ListComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         StoreModule.forRoot({}),
+        StoreModule.forFeature('list', {list: ListReducer}),
         EffectsModule.forRoot([]),
-        SharedModule
+            SharedModule
       ],
       declarations: [ ListComponent ]
     })
