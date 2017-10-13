@@ -19,6 +19,16 @@ export class ListEffects {
        new List.ListResult(x)
     );
 
+    @Effect()
+    delete$: Observable<List.List> =
+        this.actions$
+        .ofType(List.DELETE)
+        .switchMap(
+          (action: List.Delete): Observable<{}> => this
+            .contactsService
+            .delete(action.id)
+        )
+        .map((): List.List => new List.List());
 
     constructor(private actions$: Actions,
         private contactsService: ContactsService) {}

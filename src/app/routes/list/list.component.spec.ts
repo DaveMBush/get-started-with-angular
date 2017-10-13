@@ -1,3 +1,5 @@
+import { APP_BASE_HREF } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { ListReducer } from './list.reducer';
 import { SharedModule } from '../../shared/shared.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
@@ -12,11 +14,17 @@ describe('ListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
+      providers: [
+        {
+          provide: APP_BASE_HREF,
+          useValue : '/'
+        }],
+        imports: [
         StoreModule.forRoot({}),
         StoreModule.forFeature('list', {list: ListReducer}),
         EffectsModule.forRoot([]),
-            SharedModule
+        RouterModule.forRoot([]),
+        SharedModule
       ],
       declarations: [ ListComponent ]
     })

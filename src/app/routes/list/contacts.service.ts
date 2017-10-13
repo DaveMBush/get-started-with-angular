@@ -29,7 +29,10 @@ export class ContactsService {
           dateOfBirth: new Date(1990, 5, 15)
       }
     ]]);
-}
+  }
 
+  delete(id: number): Observable<{}> {
+    return Observable.of({});
+  }
 
 }

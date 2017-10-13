@@ -13,3 +13,9 @@ export class ListResult implements Action {
     constructor(public rows:
         ReadonlyArray<Contact>) {}
 }
+
+export const DELETE = 'List.Delete';
+export class Delete implements Action {
+    readonly type = DELETE;
+    constructor(public id: number) {}
+}
