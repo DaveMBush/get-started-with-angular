@@ -1,7 +1,4 @@
-import { AppState } from '../../app-state';
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import * as Errors from '../../shared/errors/errors.actions';
 
 @Component({
   selector: 'app-list',
@@ -10,14 +7,9 @@ import * as Errors from '../../shared/errors/errors.actions';
 })
 export class ListComponent implements OnInit {
 
-  constructor(private store: Store<AppState>) {
+  constructor() {
   }
 
   ngOnInit(): void {
-  }
-
-  start(): void {
-    this.store.dispatch(
-      new Errors.Add('Here is an error'));
   }
 }
