@@ -1,3 +1,5 @@
+import { Contact } from './contact';
+import { ContactsService } from './contacts.service';
 import { Observable } from 'rxjs/Rx';
 import { Actions, Effect } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
@@ -9,26 +11,15 @@ export class ListEffects {
     list$: Observable<List.ListResult> =
         this.actions$
         .ofType(List.LIST)
-        .map((): List.ListResult =>
-          new List.ListResult(
-            [
-                {
-                    id: 1,
-                    firstName: 'Dave',
-                    lastName: 'Bush',
-                    dateOfBirth:
-                      new Date(2000, 0, 15)
-                },
-                {
-                    id: 2,
-                    firstName: 'John',
-                    lastName: 'Dough',
-                    dateOfBirth:
-                      new Date(1990, 5, 15)
-                }
-            ]
-        )
+        .switchMap(():
+     Observable<{} | ReadonlyArray<Contact>> =>
+     this.contactsService.list())
+        .map((x: ReadonlyArray<Contact>):
+        List.ListResult =>
+       new List.ListResult(x)
     );
 
-    constructor(private actions$: Actions) {}
+
+    constructor(private actions$: Actions,
+        private contactsService: ContactsService) {}
 }

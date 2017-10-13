@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
@@ -16,6 +17,7 @@ import { ErrorHandler } from './shared/errors/error-handler';
   imports: [
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     SharedModule
