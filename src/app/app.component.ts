@@ -1,4 +1,7 @@
+import { AppState } from './app-state';
+import { Observable } from 'rxjs/Rx';
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +9,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // tslint:disable-next-line:typedef
-  title = 'app';
+  wait: Observable<number>;
+  constructor(store: Store<AppState>) {
+    this.wait = store.select((x: AppState) => x.shared.wait);
+  }
 }
+
