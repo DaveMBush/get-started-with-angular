@@ -1,3 +1,16 @@
-<p>
-  list works!
-</p>
+<table class="table table-hover">
+  <thead>
+  <tr>
+      <td>First Name</td>
+      <td>Last Name</td>
+      <td>DOB</td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let contact of contacts">
+      <td>{{contact.firstName}}</td>
+      <td>{{contact.lastName}}</td>
+      <td>{{contact.dateOfBirth | date:'shortDate'}}</td>
+  </tr>
+  </tbody>
+</table>
