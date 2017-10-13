@@ -35,12 +35,12 @@ export class ContactsService {
 
   delete(id: number): Observable<{}> {
     contacts = contacts
-      .filter((x: Contact) => 
+      .filter((x: Contact) =>
           x.id !== id)
       .reduce(
         (
      previousContact: ReadonlyArray<Contact>,
-     currentContact: Contact ) => 
+     currentContact: Contact ) =>
          [...previousContact, currentContact]
       , []);
       return Observable.of({});
@@ -66,8 +66,7 @@ export class ContactsService {
   add(contact: Contact): Observable<number> {
       const maxId: number =
         contacts.reduce(
-          (max: number, c: Contact) => 
-            {
+          (max: number, c: Contact) => {
               if(max < c.id) {
                 return c.id;
         }
