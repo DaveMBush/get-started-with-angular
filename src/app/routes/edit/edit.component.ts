@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { AppState } from '../../app-state';
 import { EditForm } from './edit-form';
 import { Subscription } from 'rxjs/Rx';
@@ -25,7 +26,8 @@ export class EditComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private store: Store<AppState>) {
+    private store: Store<AppState>,
+    private route: ActivatedRoute) {
       this.form = this.formBuilder.group({
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
@@ -47,10 +49,16 @@ export class EditComponent implements OnInit, OnDestroy {
             this.store.dispatch(new Edit.Update(x))
     );
     this.editEntitySubscription =
-    this.editEntity.subscribe(
-      (x: EditForm) =>
-      this.form.patchValue(
-        x, {emitEvent: false}));
+    this.editEntity.subscribe((x: EditForm) =>
+      this.form.patchValue(x, {emitEvent: false}));
+        this.route.params.first()
+        .subscribe((params: Map<string, string>) => {
+              this.store.dispatch(
+                new Edit.Get(parseInt(
+                    params['id'] ?
+                  params['id'] : '-1', 10)));
+          });
+
   }
 
   public ngOnDestroy(): void {

@@ -1,3 +1,5 @@
+import { RouterModule } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
 import { EditReducer } from './edit.reducer';
 import { EditState } from './edit-state';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -17,14 +19,21 @@ describe('EditComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      providers: [
+        {
+          provide: APP_BASE_HREF,
+          useValue: '/'
+        }
+      ],
       imports: [ReactiveFormsModule,
+        RouterModule.forRoot([]),
         StoreModule.forRoot({}),
         StoreModule.forFeature(
-            'edit', reducers)
-        ],
-      declarations: [ EditComponent ]
+          'edit', reducers)
+      ],
+      declarations: [EditComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
