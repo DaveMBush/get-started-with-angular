@@ -18,17 +18,4 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-  it(`should have as title 'app'`, async(() => {
-    const fixture: ComponentFixture<AppComponent> = TestBed.createComponent(AppComponent);
-    // tslint:disable-next-line:typedef
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app');
-  }));
-  it('should render title in a h1 tag', async(() => {
-    const fixture: ComponentFixture<AppComponent> = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    // tslint:disable-next-line:typedef
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
-  }));
 });
