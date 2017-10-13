@@ -1,2 +1,5 @@
 <app-wait *ngIf="(wait | async) > 0"></app-wait>
+<app-errors *ngIf="(errors | async)?.length > 0" 
+    [data]="(errors | async)">
+</app-errors>
 <router-outlet></router-outlet>

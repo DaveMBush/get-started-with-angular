@@ -10,8 +10,12 @@ import { Store } from '@ngrx/store';
 })
 export class AppComponent {
   wait: Observable<number>;
+  errors: Observable<ReadonlyArray<string>>;
+
   constructor(store: Store<AppState>) {
     this.wait = store.select((x: AppState) => x.shared.wait);
+    this.errors = store.select((x: AppState) => x.shared.errors);
+
   }
 }
 
