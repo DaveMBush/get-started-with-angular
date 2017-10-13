@@ -1,4 +1,3 @@
-import { ContactsService } from './contacts.service';
 import { ListEffects } from './list.effects';
 import { ListReducer } from './list.reducer';
 import { ListState } from './list-state';
@@ -14,7 +13,7 @@ const reducers: ActionReducerMap<ListState> = {
 }
 
 @NgModule({
-  providers: [ContactsService],
+  providers: [],
     imports: [
       StoreModule.forFeature(
         'list', reducers),

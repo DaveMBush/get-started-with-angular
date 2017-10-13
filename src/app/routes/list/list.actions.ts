@@ -1,4 +1,4 @@
-import { Contact } from './contact';
+import { Contact } from '../../shared/contact';
 import { Action } from '@ngrx/store';
 
 // tslint:disable:typedef

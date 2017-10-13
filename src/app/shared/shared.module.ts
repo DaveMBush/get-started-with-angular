@@ -1,3 +1,4 @@
+import { ContactsService } from './contacts.service';
 import { ErrorsReducer } from './errors/errors.reducer';
 import { WaitEffects } from './wait/wait.effects';
 import { WaitReducer } from './wait/wait.reducer';
@@ -15,13 +16,14 @@ const reducers: ActionReducerMap<SharedState> = {
 }
 
 @NgModule({
-imports: [
-  CommonModule,
-  StoreModule.forFeature('shared',
-    reducers),
-  EffectsModule.forFeature([WaitEffects])
-],
-declarations: [WaitComponent, ErrorsComponent],
-exports: [WaitComponent, ErrorsComponent]
+  providers: [ContactsService],
+  imports: [
+    CommonModule,
+    StoreModule.forFeature('shared',
+      reducers),
+    EffectsModule.forFeature([WaitEffects])
+  ],
+  declarations: [WaitComponent, ErrorsComponent],
+  exports: [WaitComponent, ErrorsComponent]
 })
 export class SharedModule { }

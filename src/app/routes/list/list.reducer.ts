@@ -1,5 +1,5 @@
 import { ActionReducer } from '@ngrx/store';
-import { Contact } from './contact';
+import { Contact } from '../../shared/contact';
 import * as List from './list.actions';
 
 export function listReducer(
