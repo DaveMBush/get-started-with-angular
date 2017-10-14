@@ -53,6 +53,9 @@ export class ContactsService {
   }
 
   update(contact: Contact): Observable<number> {
+    if(contact.id < 0) {
+      return this.add(contact);
+    }
       const c: Contact =
         contacts.find((x: Contact) =>
             x.id === contact.id);
@@ -73,8 +76,8 @@ export class ContactsService {
         return max;
       }
       , 0)
-      contact.id = maxId;
+      contact.id = maxId + 1;
       contacts = [...contacts, contact];
-      return Observable.of(maxId);
+      return Observable.of(contact.id);
   }
 }

@@ -12,24 +12,29 @@ Injectable()
 export class EditEffects {
     @Effect()
     get$: Observable<Edit.Update> =
-    this.actions$
+        this.actions$
         .ofType(Edit.GET)
-        .switchMap((action: Edit.Get): Observable<{} | ReadonlyArray<Contact>> =>
-            this.contactsService
-                .get(action.id))
-        .map((x: ReadonlyArray<Contact>): ReadonlyArray<EditForm> => x.map((c: Contact) =>
+        .switchMap((action: Edit.Get):
+     Observable<{}|ReadonlyArray<Contact>> =>
+        this.contactsService.get(action.id))
+        // no record means we retrieved id -1
+        .map((records: ReadonlyArray<Contact>):
+            Contact => records[0] || {
+                id: -1,
+                firstName: '',
+                lastName: '',
+                dateOfBirth: null
+            }
+        )
+        .map((x: Contact): EditForm =>
             ({
-                id: c.id,
-                firstName: c.firstName,
-                lastName: c.lastName,
-                dateOfBirth:
-                c.dateOfBirth
-                    .toLocaleDateString()
-            })
-        ))
-        .map((x: ReadonlyArray<EditForm>):
-            Edit.Update =>
-            new Edit.Update(x[0]));
+                id: x.id,
+                firstName: x.firstName,
+                lastName: x.lastName,
+                dateOfBirth: x.dateOfBirth ? x.dateOfBirth.toLocaleDateString() : '' })
+        )
+        .map((x: EditForm): Edit.Update =>
+            new Edit.Update(x));
 
     @Effect()
     save$: Observable<Edit.Get> =
