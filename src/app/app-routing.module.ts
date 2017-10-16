@@ -17,6 +17,12 @@ const routes: Routes = [{
   path: 'add',
   loadChildren:
    './routes/edit/edit.module#EditModule'
+}, {
+  path: 'file-not-found',
+  loadChildren: './routes/file-not-found/file-not-found.module#FileNotFoundModule'
+}, {
+  path: '**',
+  redirectTo: 'file-not-found'
 }
 ];
 
