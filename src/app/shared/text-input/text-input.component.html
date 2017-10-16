@@ -1,0 +1,16 @@
+<div class="form-group">
+  <label class="col-lg-3"
+    [for]="inputId">
+    <ng-content>
+    </ng-content>
+  </label>
+  <div class="col-lg-9">
+    <input #input type="text" 
+      class="form-control" 
+      placeholder="first name"
+      [id]="inputId"
+      [(ngModel)]="value"
+      (blur)="onBlur()">
+      <ng-content select=".errors"></ng-content>
+  </div>
+</div>

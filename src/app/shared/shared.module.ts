@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { ContactsService } from './contacts.service';
 import { ErrorsReducer } from './errors/errors.reducer';
 import { WaitEffects } from './wait/wait.effects';
@@ -9,6 +10,7 @@ import { ActionReducerMap, StoreModule } from '@ngrx/store';
 import { SharedState } from './shared-state';
 import { EffectsModule } from '@ngrx/effects';
 import { ErrorsComponent } from './errors/errors.component';
+import { TextInputComponent } from './text-input/text-input.component';
 
 const reducers: ActionReducerMap<SharedState> = {
   wait: WaitReducer,
@@ -19,11 +21,20 @@ const reducers: ActionReducerMap<SharedState> = {
   providers: [ContactsService],
   imports: [
     CommonModule,
+    FormsModule,
     StoreModule.forFeature('shared',
       reducers),
     EffectsModule.forFeature([WaitEffects])
   ],
-  declarations: [WaitComponent, ErrorsComponent],
-  exports: [WaitComponent, ErrorsComponent]
+  declarations: [
+    WaitComponent,
+    ErrorsComponent,
+    TextInputComponent
+  ],
+  exports: [
+    WaitComponent,
+    ErrorsComponent,
+    TextInputComponent
+  ]
 })
 export class SharedModule { }

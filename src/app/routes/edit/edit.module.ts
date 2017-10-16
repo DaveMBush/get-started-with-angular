@@ -1,3 +1,4 @@
+import { SharedModule } from '../../shared/shared.module';
 import { EditEffects } from './edit.effects';
 import { EditReducer } from './edit.reducer';
 import { EditState } from './edit-state';
@@ -15,6 +16,7 @@ const reducers: ActionReducerMap<EditState> = {
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
     ReactiveFormsModule,
     StoreModule.forFeature('edit', reducers),
     EffectsModule.forFeature([EditEffects]),
