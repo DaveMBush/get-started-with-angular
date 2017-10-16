@@ -2,14 +2,15 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { AppState } from '../../app-state';
 import { Contact } from '../../shared/contact';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as List from './list.actions';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent implements OnInit {
   contacts: Observable<ReadonlyArray<Contact>>;
