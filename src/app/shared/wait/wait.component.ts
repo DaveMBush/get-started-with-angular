@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   selector: 'app-wait',
   templateUrl: './wait.component.html',
   styleUrls: ['./wait.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush  
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WaitComponent implements OnInit {
 

@@ -7,7 +7,7 @@ import * as Errors from './errors.actions';
   selector: 'app-errors',
   templateUrl: './errors.component.html',
   styleUrls: ['./errors.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush  
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ErrorsComponent implements OnInit {
   @Input() data: ReadonlyArray<string> = [];
