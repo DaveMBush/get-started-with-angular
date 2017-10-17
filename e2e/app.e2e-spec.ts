@@ -8,7 +8,7 @@ describe('angular-book App', () => {
     page.navigateTo();
   });
 
-  it('should display the banner', () => 
+  it('should display the banner', () =>
     expect(page.getHeaderText()).toEqual('Angular Tutorial App')
   );
 
