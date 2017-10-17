@@ -6,7 +6,11 @@ export class AppPage {
     return browser.get('/');
   }
 
-  getParagraphText(): promise.Promise<string> {
-    return element(by.css('app-root h1')).getText();
+  getHeaderText(): promise.Promise<string> {
+    return element(by.css('app-root .navbar-brand')).getText();
+  }
+
+  get currentUrl(): promise.Promise<string> {
+    return browser.getCurrentUrl();
   }
 }

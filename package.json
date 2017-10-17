@@ -11,7 +11,7 @@
     "testWithCoverage": "ng test --single-run --code-coverage",
     "lint": "ng lint --type-check --fix",
     "csslint": "stylelint src/**/*.css --fix",
-    "e2e": "ng e2e",
+    "e2e": "ng e2e --aot",
     "postinstall": "npm install -g stylelint"
   },
   "pre-commit": [

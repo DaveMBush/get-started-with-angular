@@ -5,10 +5,14 @@ describe('angular-book App', () => {
 
   beforeEach(() => {
     page = new AppPage();
+    page.navigateTo();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
-  });
+  it('should display the banner', () => 
+    expect(page.getHeaderText()).toEqual('Angular Tutorial App')
+  );
+
+  it('should end up on the list page', () =>
+    expect(page.currentUrl).toContain('/list')
+  );
 });
