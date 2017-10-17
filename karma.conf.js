@@ -6,6 +6,7 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['jasmine', '@angular/cli'],
     plugins: [
+      require('karma-spec-reporter'),
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
@@ -22,7 +23,7 @@ module.exports = function (config) {
     angularCli: {
       environment: 'dev'
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['spec', 'kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,

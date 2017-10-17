@@ -1,80 +1,36 @@
-import { ActivatedRoute, Router } from '@angular/router';
-import { AppState } from '../../app-state';
-import { EditForm } from './edit-form';
-import { Subscription } from 'rxjs/Rx';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { EditService } from './edit.service';
+import { FormGroup } from '@angular/forms';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import * as Edit from './edit.actions';
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [EditService]
 })
 export class EditComponent implements OnInit, OnDestroy {
-  form: FormGroup;
-  formSubscription: Subscription;
-  editEntity: Store<EditForm>;
-  editEntitySubscription: Subscription
-  static isDate(c: FormControl): object {
-    if(!c.value.match(
-      /^\d{1,2}\/\d{1,2}\/(\d{2}|\d{4})$/)) {
-        return {invalidDate: true};
-      }
+  get form(): FormGroup {
+    return this.editService.form;
   }
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private store: Store<AppState>,
-    private route: ActivatedRoute,
-    private router: Router) {
-      this.form = this.formBuilder.group({
-        id: ['', Validators.nullValidator],
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
-        dateOfBirth: ['',
-        Validators.compose(
-          [ Validators.required,
-            EditComponent.isDate]
-          )
-        ]
-      });
-      this.editEntity = this.store.select(
-        (x: AppState) => x.edit.form);
+  constructor(private editService: EditService) {
   }
 
   ngOnInit(): void {
-    this.formSubscription =
-      this.form.valueChanges.subscribe(
-        (x: EditForm) =>
-            this.store.dispatch(new Edit.Update(x))
-    );
-    this.editEntitySubscription =
-    this.editEntity.subscribe((x: EditForm) =>
-      this.form.patchValue(x, {emitEvent: false}));
-        this.route.params.first()
-        .subscribe((params: Map<string, string>) => {
-              this.store.dispatch(
-                new Edit.Get(parseInt(
-                    params['id'] ?
-                  params['id'] : '-1', 10)));
-          });
-
+    this.editService.ngOnInit();
   }
 
   public ngOnDestroy(): void {
-    this.formSubscription.unsubscribe();
-    this.editEntitySubscription.unsubscribe();
+    this.editService.ngOnDestroy();
   }
 
   save(): void {
-    this.store.dispatch(new Edit.Save());
+    this.editService.save();
   }
 
   cancel(): void {
-    this.router.navigate(['/list']);
+    this.editService.cancel();
   }
 
 }
