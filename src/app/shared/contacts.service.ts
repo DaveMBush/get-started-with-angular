@@ -1,6 +1,9 @@
+import { AppState } from '../app-state';
+import { Store } from '@ngrx/store';
 import { Contact } from './contact';
 import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
+import * as Wait from './wait/wait.actions';
 
 let contacts: ReadonlyArray<Contact> = [
   {
@@ -21,7 +24,7 @@ let contacts: ReadonlyArray<Contact> = [
 @Injectable()
 export class ContactsService {
 
-  constructor(/*private httpClient: HttpClient*/) { }
+  constructor(private store: Store<AppState>) { }
   list(): Observable<{} | ReadonlyArray<Contact>> {
     // return this
     //     .httpClient
@@ -30,7 +33,8 @@ export class ContactsService {
     //   .retry(2)
     //   .catch((e: Error) =>
     //         /* handle errors here */);
-    return Observable.from([contacts]);
+    this.store.dispatch(new Wait.Start());
+    return Observable.timer(2000).first().switchMap(() => Observable.from([contacts])).finally(() => this.store.dispatch(new Wait.End()));
   }
 
   delete(id: number): Observable<{}> {
