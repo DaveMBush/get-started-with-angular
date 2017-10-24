@@ -1,27 +1,29 @@
-# AngularBook
+# Get Started With Angular: An Opinionated Guide
+This is the project to support the book [Get Started With Angular](http://amzn.to/2zMcFxD)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
+**Why this book?**
 
-## Development server
+Many books give you everything you could possibly need to know about Angular. A lot of facts. A lot of how. Very little “Why?” Few opinions. They take forever to wade through and in the end, you still have several decisions to make.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Instead, this book is a training manual. Wherever possible, you are told not just how, but why. It is a book that comes as a result of actually training programmers new to Angular. It answers the questions that come up as a result of using Angular.
 
-## Code scaffolding
+**This book is for you if want to learn about:**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Node, NPM and the Angular CLI.
+- Components, Module, Services and how they relate to each other.
+- How to include CSS and JavaScript in your application the right way.
+- Reactive Forms vs Templated Forms.
+- RxJS, Observables, and Functional Reactive Programming.
+- NgRX state management, Actions, Reducers and Effects.
+- Smart components vs Dumb components.
+- Routes, passing parameters, and Lazy Loading.
+- Angular the way most organizations use it.
+- Battle tested design patterns, architecture and coding standards.
 
-## Build
+**This book is not for you if:**
+- You are looking for a book on AngularJS (AKA version 1.x).
+- You want to know everything there is to know about Angular.
+- You have no intention of doing the exercises.
+- You have no prior experience programming.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Check it out now on [Amazon](http://amzn.to/2zMcFxD)
