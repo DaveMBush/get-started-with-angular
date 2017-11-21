@@ -4,12 +4,21 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --aot",
+    "startDebug": "ng serve --extract-css --aot",
     "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "test": "ng test --single-run",
+    "lint": "ng lint --type-check --fix",
+    "e2e": "ng e2e",
+    "csslint": "stylelint src/**/*.css --fix",
+    "postinstall": "npm install -g stylelint"
   },
+  "pre-commit": [
+    "csslint",
+    "lint",
+    "test",
+    "build"
+  ],
   "private": true,
   "dependencies": {
     "@angular/animations": "^5.0.0",
@@ -32,7 +41,7 @@
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
-    "codelyzer": "~3.2.0",
+    "codelyzer": "~4.0.1",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
     "karma": "~1.7.0",
@@ -41,9 +50,13 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "pre-commit": "^1.2.2",
     "protractor": "~5.1.2",
+    "stylelint": "^8.2.0",
+    "stylelint-config-standard": "^17.0.0",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
+    "tslint-immutable": "^4.4.0",
     "typescript": "~2.4.2"
   }
 }
