@@ -2,6 +2,7 @@ import { Contact } from './contact';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
+import 'rxjs/add/observable/of';
 @Injectable()
 export class ContactsService {
 
@@ -22,5 +23,9 @@ export class ContactsService {
       }
     ]]);
 
+  }
+
+  delete(id: number): Observable<object> {
+    return Observable.of({});
   }
 }

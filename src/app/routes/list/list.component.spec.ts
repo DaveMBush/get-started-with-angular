@@ -1,3 +1,5 @@
+import { APP_BASE_HREF } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { ListReducer } from './list.reducer';
 import { SharedModule } from '../../shared/shared.module';
 import { EffectsModule } from '@ngrx/effects';
@@ -12,11 +14,18 @@ describe('ListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      providers: [
+        {
+          provide: APP_BASE_HREF,
+          useValue: '/'
+        }
+      ],
       imports: [
         StoreModule.forRoot({}),
         StoreModule.forFeature('list',
           { list: ListReducer }),
         EffectsModule.forRoot([]),
+        RouterModule.forRoot([]),
         SharedModule
       ],
       declarations: [ ListComponent ]

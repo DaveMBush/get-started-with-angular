@@ -4,6 +4,7 @@
       <td>First Name</td>
       <td>Last Name</td>
       <td>DOB</td>
+      <td>&nbsp;</td>
     </tr>
   </thead>
   <tbody>
@@ -13,6 +14,14 @@
       <td>
         {{contact.dateOfBirth | date:'shortDate'}}
       </td>
+      <td>
+        <button (click)="edit(contact.id)" class="btn btn-default">
+          Edit</button>
+        <button (click)="delete(contact.id)" class="btn btn-default">
+          Delete</button>
+      </td>
     </tr>
   </tbody>
 </table>
+<button (click)="add()" class="btn btn-primary pull-right">
+  Add</button>
