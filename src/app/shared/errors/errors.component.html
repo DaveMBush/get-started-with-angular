@@ -1,0 +1,16 @@
+<div class="overlay"></div>
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Errors</h4>
+      </div>
+      <div class="modal-body">
+        <p *ngFor="let item of data">{{item}}</p>
+      </div>
+      <div class="modal-footer">
+        <button (click)="clear()" type="button" class="btn btn-default">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

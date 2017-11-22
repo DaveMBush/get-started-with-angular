@@ -1,7 +1,11 @@
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {
+  ErrorHandler as NgErrorHandler,
+  NgModule
+} from '@angular/core';
+import { ErrorHandler } from './shared/errors/error-handler';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -19,7 +23,10 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     SharedModule
   ],
-  providers: [],
+  providers: [{
+    provide: NgErrorHandler,
+    useClass: ErrorHandler
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

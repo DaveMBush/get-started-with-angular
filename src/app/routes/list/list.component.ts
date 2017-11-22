@@ -1,8 +1,7 @@
 import { AppState } from '../../app-state';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
-import * as Wait from '../../shared/wait/wait.actions';
-import { Observable } from 'rxjs/Observable';
+import * as Errors from '../../shared/errors/errors.actions';
 
 @Component({
   selector: 'app-list',
@@ -17,11 +16,8 @@ export class ListComponent implements OnInit {
   }
 
   start(): void {
-    this.store.dispatch(new Wait.Start());
-    Observable.timer(4000)
-      .take(1)
-      .subscribe((): void =>
-        this.store.dispatch(new Wait.End()));
+    this.store.dispatch(
+      new Errors.Add('Here is an error'));
   }
 
 }
