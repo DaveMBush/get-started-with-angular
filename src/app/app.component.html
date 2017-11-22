@@ -1,3 +1,16 @@
-<app-wait *ngIf="(wait | async) > 0"></app-wait>
-<app-errors *ngIf="(errors | async)?.length > 0" [data]="(errors | async)"></app-errors>
-<router-outlet></router-outlet>
+<app-wait *ngIf="(wait | async) > 0">
+</app-wait>
+<app-errors *ngIf="(errors | async)?.length > 0" [data]="(errors | async)">
+</app-errors>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <div class="navbar-brand">
+        Angular Tutorial App
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
