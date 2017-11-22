@@ -7,7 +7,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let contact of contacts">
+    <tr *ngFor="let contact of (contacts | async)">
       <td>{{contact.firstName}}</td>
       <td>{{contact.lastName}}</td>
       <td>

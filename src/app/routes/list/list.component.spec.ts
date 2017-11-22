@@ -1,3 +1,4 @@
+import { ListReducer } from './list.reducer';
 import { SharedModule } from '../../shared/shared.module';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -13,6 +14,8 @@ describe('ListComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         StoreModule.forRoot({}),
+        StoreModule.forFeature('list',
+          { list: ListReducer }),
         EffectsModule.forRoot([]),
         SharedModule
       ],

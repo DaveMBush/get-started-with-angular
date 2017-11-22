@@ -1,5 +1,9 @@
+import { Store } from '@ngrx/store';
+import { AppState } from '../../app-state';
 import { Contact } from './contact';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import * as List from './list.actions';
 
 @Component({
   selector: 'app-list',
@@ -7,24 +11,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  contacts: ReadonlyArray<Contact> = [
-    {
-      id: 1,
-      firstName: 'Dave',
-      lastName: 'Bush',
-      dateOfBirth: new Date(2000, 0, 15)
-    },
-    {
-      id: 2,
-      firstName: 'John',
-      lastName: 'Dough',
-      dateOfBirth: new Date(1990, 5, 15)
-    }
-  ];
+  contacts: Observable<ReadonlyArray<Contact>>;
 
-  constructor() { }
+  constructor(private store: Store<AppState>) {
+    this.contacts = store.select(
+        (x: AppState) => x.list.list);
+   }
 
   ngOnInit(): void {
+    this.store.dispatch(new List.List());
   }
 
 }
