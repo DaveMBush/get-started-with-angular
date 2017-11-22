@@ -1,3 +1,6 @@
+import { SharedModule } from '../../shared/shared.module';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListComponent } from './list.component';
@@ -8,6 +11,11 @@ describe('ListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        StoreModule.forRoot({}),
+        EffectsModule.forRoot([]),
+        SharedModule
+      ],
       declarations: [ ListComponent ]
     })
     .compileComponents();
