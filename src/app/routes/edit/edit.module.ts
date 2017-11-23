@@ -1,3 +1,5 @@
+import { EffectsModule } from '@ngrx/effects';
+import { EditEffects } from './edit.effects';
 import { EditReducer } from './edit.reducer';
 import { EditState } from './edit-state';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -15,6 +17,7 @@ const reducers: ActionReducerMap<EditState> = {
     CommonModule,
     ReactiveFormsModule,
     StoreModule.forFeature('edit', reducers),
+    EffectsModule.forFeature([EditEffects]),
     RouterModule.forChild([{
       path: '',
       pathMatch: 'full',

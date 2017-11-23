@@ -1,9 +1,11 @@
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app-state';
 import { EditForm } from './edit-form';
 import { Subscription } from 'rxjs/Subscription';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import 'rxjs/add/operator/first';
 import * as Edit from './edit.actions';
 @Component({
   selector: 'app-edit',
@@ -24,7 +26,8 @@ export class EditComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<AppState>,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute) {
       this.form = this.formBuilder.group(
         {
           firstName: ['', Validators.required],
@@ -49,6 +52,15 @@ export class EditComponent implements OnInit, OnDestroy {
           (x: EditForm) =>
             this.form.patchValue(
               x, { emitEvent: false }));
+  this
+    .route.params.first()
+    .subscribe(
+      (params: Map<string, string>) => {
+          this.store.dispatch(
+            new Edit.Get(parseInt(
+                params['id'] ?
+              params['id'] : '-1', 10)));
+      });
   }
 
   public ngOnDestroy(): void {

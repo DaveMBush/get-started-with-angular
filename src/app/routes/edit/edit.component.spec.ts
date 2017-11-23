@@ -1,3 +1,5 @@
+import { APP_BASE_HREF } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { EditReducer } from './edit.reducer';
 import { EditState } from './edit-state';
 import { ActionReducerMap, StoreModule } from '@ngrx/store';
@@ -19,7 +21,14 @@ describe('EditComponent', () => {
       imports: [
         StoreModule.forRoot({}),
         StoreModule.forFeature('edit', reducers),
+        RouterModule.forRoot([]),
         ReactiveFormsModule
+      ],
+      providers: [
+        {
+          provide: APP_BASE_HREF,
+          useValue: '/'
+        }
       ],
       declarations: [ EditComponent ]
     })

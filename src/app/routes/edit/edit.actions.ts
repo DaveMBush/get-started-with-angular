@@ -5,5 +5,11 @@ import { Action } from '@ngrx/store';
 export const UPDATE = 'Edit.Update';
 export class Update implements Action {
     readonly type = UPDATE;
-    constructor(public form: EditForm) {}
+    constructor(public form: EditForm) { }
+}
+
+export const GET = 'Edit.Get';
+export class Get implements Action {
+    readonly type = GET;
+    constructor(public id: number) { }
 }
