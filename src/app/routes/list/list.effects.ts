@@ -1,5 +1,5 @@
-import { ContactsService } from './contacts.service';
-import { Contact } from './contact';
+import { ContactsService } from '../../shared/contacts.service';
+import { Contact } from '../../shared/contact';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Actions, Effect } from '@ngrx/effects';

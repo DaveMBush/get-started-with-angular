@@ -3,12 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/observable/of';
-@Injectable()
-export class ContactsService {
 
-  constructor() { }
-  list(): Observable<{} | ReadonlyArray<Contact>> {
-    return Observable.from([[
+const contacts: ReadonlyArray<Contact> = [
       {
         id: 1,
         firstName: 'Dave',
@@ -21,7 +17,14 @@ export class ContactsService {
         lastName: 'Dough',
         dateOfBirth: new Date(1990, 5, 15)
       }
-    ]]);
+    ];
+
+@Injectable()
+export class ContactsService {
+
+  constructor() { }
+  list(): Observable<{} | ReadonlyArray<Contact>> {
+    return Observable.from([contacts]);
 
   }
 

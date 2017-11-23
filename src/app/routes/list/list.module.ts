@@ -1,4 +1,3 @@
-import { ContactsService } from './contacts.service';
 import { EffectsModule } from '@ngrx/effects';
 import { ActionReducerMap, StoreModule } from '@ngrx/store';
 import { ListEffects } from './list.effects';
@@ -26,7 +25,7 @@ const reducers: ActionReducerMap<ListState> = {
       component: ListComponent
     }])
   ],
-  providers: [ContactsService],
+  providers: [],
   declarations: [ListComponent]
 })
 export class ListModule { }

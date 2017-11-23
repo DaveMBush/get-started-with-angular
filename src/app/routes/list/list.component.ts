@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app-state';
-import { Contact } from './contact';
+import { Contact } from '../../shared/contact';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import * as List from './list.actions';

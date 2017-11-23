@@ -1,4 +1,4 @@
-import { Contact } from './contact';
+import { Contact } from '../../shared/contact';
 import { Action } from '@ngrx/store';
 
 // tslint:disable:typedef
@@ -17,5 +17,5 @@ export class ListResult implements Action {
 export const DELETE = 'List.Delete';
 export class Delete implements Action {
     readonly type = DELETE;
-    constructor(public id: number) {}
+    constructor(public id: number) { }
 }

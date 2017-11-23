@@ -8,7 +8,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WaitComponent } from './wait/wait.component';
 import { ErrorsComponent } from './errors/errors.component';
-
+import { ContactsService } from './contacts.service';
 const reducers:
   ActionReducerMap<SharedState> = {
     wait: WaitReducer,
@@ -22,6 +22,7 @@ const reducers:
       reducers),
     EffectsModule.forFeature([WaitEffects])
   ],
+  providers: [ContactsService],
   declarations: [WaitComponent, ErrorsComponent],
   exports: [WaitComponent, ErrorsComponent]
 })
