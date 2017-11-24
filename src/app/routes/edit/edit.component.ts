@@ -4,13 +4,14 @@ import { AppState } from '../../app-state';
 import { EditForm } from './edit-form';
 import { Subscription } from 'rxjs/Subscription';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import 'rxjs/add/operator/first';
 import * as Edit from './edit.actions';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  styleUrls: ['./edit.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EditComponent implements OnInit, OnDestroy {
   form: FormGroup;
