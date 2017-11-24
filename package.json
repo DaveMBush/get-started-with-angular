@@ -9,7 +9,7 @@
     "build": "ng build",
     "test": "ng test --single-run",
     "lint": "ng lint --type-check --fix",
-    "e2e": "ng e2e",
+    "e2e": "ng e2e --aot",
     "csslint": "stylelint src/**/*.css --fix",
     "postinstall": "npm install -g stylelint"
   },
