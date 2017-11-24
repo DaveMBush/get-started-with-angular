@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app-state';
 import { EditForm } from './edit-form';
@@ -27,9 +27,11 @@ export class EditComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store<AppState>,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router: Router) {
       this.form = this.formBuilder.group(
         {
+          id: ['', Validators.nullValidator],
           firstName: ['', Validators.required],
           lastName: ['', Validators.required],
           dateOfBirth: ['', Validators.compose([
@@ -39,7 +41,6 @@ export class EditComponent implements OnInit, OnDestroy {
         }
       );
       this.editEntity = this.store.select((x: AppState) => x.edit.form);
-
   }
 
   ngOnInit(): void {
@@ -66,6 +67,14 @@ export class EditComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this.formSubscription.unsubscribe();
     this.editEntitySubscription.unsubscribe();
+  }
+
+  save(): void {
+    this.store.dispatch(new Edit.Save());
+  }
+
+  cancel(): void {
+    this.router.navigate(['/list'])
   }
 
 }

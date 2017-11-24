@@ -13,3 +13,8 @@ export class Get implements Action {
     readonly type = GET;
     constructor(public id: number) { }
 }
+
+export const SAVE = 'Edit.Save';
+export class Save implements Action {
+    readonly type = SAVE;
+}

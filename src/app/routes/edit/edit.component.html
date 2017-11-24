@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-lg-offeset-3 col-lg-6">
     <form class="form-horizontal" [formGroup]="form">
+      <input type="hidden" formControlName="id">
       <div class="form-group">
         <label class="col-lg-3" for="firstName">
           First Name:</label>
@@ -23,9 +24,9 @@
       </div>
     </form>
     <div class="col-lg-12">
-      <button class="btn btn-primary pull-right" [disabled]="!form.valid">
+      <button (click)="save()" class="btn btn-primary pull-right" [disabled]="!form.valid">
         Save</button>
-      <button class="btn btn-default pull-right">
+      <button (click)="cancel()" class="btn btn-default pull-right">
         Cancel</button>
     </div>
   </div>

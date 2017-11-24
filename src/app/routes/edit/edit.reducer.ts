@@ -4,6 +4,7 @@ import * as Edit from './edit.actions';
 
 export function editReducer(
     state: EditForm = {
+        id: -1,
         firstName: '',
         lastName: '',
         dateOfBirth: ''
