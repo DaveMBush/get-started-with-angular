@@ -1,9 +1,11 @@
+import { EffectsModule } from '@ngrx/effects';
+import { SharedModule } from '../../shared/shared.module';
 import { APP_BASE_HREF } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { EditReducer } from './edit.reducer';
 import { EditState } from './edit-state';
 import { ActionReducerMap, StoreModule } from '@ngrx/store';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { EditComponent } from './edit.component';
 
@@ -21,8 +23,11 @@ describe('EditComponent', () => {
       imports: [
         StoreModule.forRoot({}),
         StoreModule.forFeature('edit', reducers),
+        EffectsModule.forRoot([]),
         RouterModule.forRoot([]),
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FormsModule,
+        SharedModule
       ],
       providers: [
         {

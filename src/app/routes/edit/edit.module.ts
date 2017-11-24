@@ -1,3 +1,4 @@
+import { SharedModule } from '../../shared/shared.module';
 import { EffectsModule } from '@ngrx/effects';
 import { EditEffects } from './edit.effects';
 import { EditReducer } from './edit.reducer';
@@ -16,6 +17,7 @@ const reducers: ActionReducerMap<EditState> = {
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    SharedModule,
     StoreModule.forFeature('edit', reducers),
     EffectsModule.forFeature([EditEffects]),
     RouterModule.forChild([{
