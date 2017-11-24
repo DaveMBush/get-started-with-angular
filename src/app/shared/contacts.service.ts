@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/finally';
+import 'rxjs/add/operator/first';
 import * as Wait from './wait/wait.actions';
 
 let contacts: ReadonlyArray<Contact> = [
