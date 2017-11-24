@@ -1,8 +1,12 @@
+import { Store } from '@ngrx/store';
+import { AppState } from '../app-state';
 import { Contact } from './contact';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/finally';
+import * as Wait from './wait/wait.actions';
 
 let contacts: ReadonlyArray<Contact> = [
   {
@@ -22,10 +26,16 @@ let contacts: ReadonlyArray<Contact> = [
 @Injectable()
 export class ContactsService {
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
   list(): Observable<{} | ReadonlyArray<Contact>> {
-    return Observable.from([contacts]);
-
+    this.store.dispatch(new Wait.Start());
+    return Observable
+      .timer(2000).first()
+      .switchMap(() =>
+        Observable.from([contacts])
+      ).finally(() =>
+      this.store.dispatch(new Wait.End())
+    );
   }
 
   delete(id: number): Observable<object> {
