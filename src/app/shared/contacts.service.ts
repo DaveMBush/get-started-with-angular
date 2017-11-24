@@ -5,19 +5,19 @@ import 'rxjs/add/observable/from';
 import 'rxjs/add/observable/of';
 
 let contacts: ReadonlyArray<Contact> = [
-      {
-        id: 1,
-        firstName: 'Dave',
-        lastName: 'Bush',
-        dateOfBirth: new Date(2000, 0, 15)
-      },
-      {
-        id: 2,
-        firstName: 'John',
-        lastName: 'Dough',
-        dateOfBirth: new Date(1990, 5, 15)
-      }
-    ];
+  {
+    id: 1,
+    firstName: 'Dave',
+    lastName: 'Bush',
+    dateOfBirth: new Date(2000, 0, 15)
+  },
+  {
+    id: 2,
+    firstName: 'John',
+    lastName: 'Dough',
+    dateOfBirth: new Date(1990, 5, 15)
+  }
+];
 
 @Injectable()
 export class ContactsService {
@@ -47,29 +47,32 @@ export class ContactsService {
         x.id === id)]])
   }
   update(contact: Contact): Observable<number> {
-      const c: Contact =
-        contacts.find((x: Contact) =>
-            x.id === contact.id);
-      c.dateOfBirth = contact.dateOfBirth;
-      c.firstName = contact.firstName;
-      c.lastName = contact.lastName;
-      contacts = [...contacts];
-      return Observable.of(contact.id);
+    if (contact.id < 0) {
+      return this.add(contact);
+    }
+    const c: Contact =
+      contacts.find((x: Contact) =>
+        x.id === contact.id);
+    c.dateOfBirth = contact.dateOfBirth;
+    c.firstName = contact.firstName;
+    c.lastName = contact.lastName;
+    contacts = [...contacts];
+    return Observable.of(contact.id);
   }
 
   add(contact: Contact): Observable<number> {
     const maxId: number =
       contacts.reduce(
         (max: number, c: Contact) => {
-            if(max < c.id) {
-              return c.id;
-      }
-      return max;
-    }
-    , 0)
-    contact.id = maxId;
+          if (max < c.id) {
+            return c.id;
+          }
+          return max;
+        }
+        , 0)
+    contact.id = maxId + 1;
     contacts = [...contacts, contact];
-    return Observable.of(maxId);
+    return Observable.of(contact.id);
   }
 
 }
