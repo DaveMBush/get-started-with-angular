@@ -1,5 +1,5 @@
 # Get Started With Angular: An Opinionated Guide
-This is the project to support the book [Get Started With Angular](http://amzn.to/2zMcFxD)
+This is the project to support the book [Get Started With Angular](https://davembush.github.io/get-started-with-angular/)
 
 **Why this book?**
 
@@ -25,5 +25,3 @@ Instead, this book is a training manual. Wherever possible, you are told not jus
 - You want to know everything there is to know about Angular.
 - You have no intention of doing the exercises.
 - You have no prior experience programming.
-
-Check it out now on [Amazon](http://amzn.to/2zMcFxD)
